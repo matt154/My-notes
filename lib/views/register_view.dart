@@ -73,7 +73,7 @@ class _RegisterViewState extends State<RegisterView> {
                 } else if (e.code == 'invalid-email') {
                   _msg = 'invalid email';
                 } else {
-                  devtools.log(e.code);
+                  _msg = e.code;
                 }
               }
               setState(() {});

@@ -74,7 +74,7 @@ class _LoginViewState extends State<LoginView> {
                 } else if (e.code == 'wrong-password') {
                   _msg = "your password is worng";
                 } else {
-                  devtools.log(e.code);
+                  _msg = e.code;
                 }
               }
               setState(() {});
