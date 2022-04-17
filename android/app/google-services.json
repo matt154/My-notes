@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "563144803073",
+    "project_id": "mynotes-matt-tif",
+    "storage_bucket": "mynotes-matt-tif.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:563144803073:android:2d5dcfead8256489729100",
+        "android_client_info": {
+          "package_name": "com.example.myapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "563144803073-pru20m9i2gbbhke0iau0banalpcnsh3k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtY7sKpxTFYoWNpitAkNkBJ_wKSI2TyFU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "563144803073-pru20m9i2gbbhke0iau0banalpcnsh3k.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "563144803073-q8nii7k30shvia2u04srmdp2feu2k0aq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.myapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
