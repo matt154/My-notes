@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-
 import 'package:myapp/constants/routes.dart';
+import 'package:myapp/serices/auth/auth_exceptions.dart';
+import 'package:myapp/serices/auth/auth_service.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -58,32 +58,24 @@ class _LoginViewState extends State<LoginView> {
               final password = _password.text;
 
               try {
-                await FirebaseAuth.instance.signInWithEmailAndPassword(
-                  email: email,
-                  password: password,
-                );
-                final user = FirebaseAuth.instance.currentUser;
-                if (user?.emailVerified ?? false){
+                await AuthService.firebase().logIn(email: email, password: password);
+
+                final user = AuthService.firebase().currentUser;
+                if (user?.isEmailVerified ?? false) {
                   Navigator.of(context).pushNamedAndRemoveUntil(
-                  notesRoute,
-                  (route) => false,
-                );
-                }
-                else{
+                    notesRoute,
+                    (route) => false,
+                  );
+                } else {
                   Navigator.of(context).pushNamed(verifyEmailRoute);
                 }
-
-
-                
-              } on FirebaseAuthException catch (e) {
-                if (e.code == 'user-not-found') {
-                  _msg = "Email doesn't recognize";
-                } else if (e.code == 'wrong-password') {
-                  _msg = "your password is worng";
-                } else {
-                  _msg = e.code;
-                }
-              }
+              } on UserNotFoundAuthException {
+                _msg = "Email doesn't recognize";
+              } on WorngPasswordAuthException {
+                _msg = "your password is worng";
+              } on GenericAuthException {
+                _msg = "Authhetication error";
+              } 
               setState(() {});
             },
             child: const Text("Login"),
