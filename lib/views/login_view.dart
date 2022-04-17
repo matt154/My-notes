@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'dart:developer' as devtools show log;
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -61,14 +62,14 @@ class _LoginViewState extends State<LoginView> {
                 );
                 _msg = "Login sussesfully";
     
-                print(userCredential);
+                devtools.log(userCredential.toString());
               } on FirebaseAuthException catch (e) {
                 if (e.code == 'user-not-found') {
                   _msg = "Email doesn't recognize";
                 } else if (e.code == 'wrong-password') {
                   _msg = "your password is worng";
                 } else {
-                  print(e.code);
+                  devtools.log(e.code);
                 }
               }
               setState(() {});
